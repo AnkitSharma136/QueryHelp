@@ -1,8 +1,8 @@
 import React from 'react'
 import QuoraHeader from './QuoraHeader';
-// import Sidebar from './Sidebar';
+import Sidebar from './Sidebar';
 import Feed from './Feed';
-// import Widget from './Widget';
+import Widget from './Widget';
 import "./css/Quora.css";
 
 function Quora() {
@@ -11,9 +11,9 @@ function Quora() {
         <QuoraHeader />
         <div className='quora__contents'>
           <div className='quora__content'>
-            {/* < Sidebar /> */}
+            < Sidebar />
             < Feed />
-            {/* < Widget /> */}
+            < Widget />
           </div>
         </div>
     </div>

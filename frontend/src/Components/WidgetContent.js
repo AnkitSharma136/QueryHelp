@@ -6,7 +6,7 @@ function WidgetContent() {
     <div className=" widget__contents">
       <div className="widget__content">
         <img
-          src="https://t.ly/bUrO2"
+          src="https://cdn-icons-png.flaticon.com/512/61/61120.png"
           alt=""
         />
         <div className="widget__contentTitle">
