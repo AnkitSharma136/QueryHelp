@@ -1,12 +1,12 @@
 import"./css/Post.css";
 import { Avatar } from '@material-ui/core';
 import {
-//    ArrowDownwardOutlined, 
-//     ArrowUpwardOutlined, 
+   ArrowDownwardOutlined, 
+    ArrowUpwardOutlined, 
 //     ChatBubbleOutline, 
 //     MoreHorizOutlined, 
 //     RepeatOneOutlined, 
-//     ShareOutlined,
+    ShareOutlined,
     CloseRounded
 } from '@material-ui/icons';
 import { Modal } from "react-responsive-modal";
@@ -104,18 +104,20 @@ function Post({post}) {
             </div>
             {post.questionUrl !== "" && <img src={post.questionUrl} alt="url" />}
         </div>
-        {/* <div className='post__footer'>
+        <div className='post__footer'>
             <div className='post__footerAction'>
                 <ArrowUpwardOutlined />
+                <p>{post?.upVote}</p>
                 <ArrowDownwardOutlined/>
+                <p>{post?.downVote}</p>
             </div>
-            <RepeatOneOutlined/>
-            <ChatBubbleOutline/>
+            {/* <RepeatOneOutlined/>
+            <ChatBubbleOutline/> */}
             <div className='post__footerLeft'>
                 <ShareOutlined/>
-                <MoreHorizOutlined/>
+                {/* <MoreHorizOutlined/> */}
             </div>
-        </div> */}
+        </div>
         <p className='no__of__answer'>{post?.allAnswers.length} Answers</p>
         <div className='post__answer'>
             

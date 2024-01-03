@@ -12,6 +12,8 @@ router.post("/", async (req, res) => {
           questionName: req.body.questionName,
           questionUrl: req.body.questionUrl,
           user: req.body.user,
+          upVote : req.body.upVote,
+          downVote :req.body.downVote,
         })
         .then(() => {
           res.status(201).send({
@@ -57,6 +59,29 @@ router.get("/", async (req, res) => {
         });
       });
   } catch (e) {
+    res.status(500).send({
+      status: false,
+      message: "Unexpected error",
+    });
+  }
+});
+
+router.get('/:id' , async(req , res) => {
+  try {
+    await questionDB 
+    .findById(req.params.id)
+    .exec()
+    .then((doc) => {
+      res.status(200).send(doc);
+    })
+    .catch((error) => {
+      res.status(500).send({
+        status: false,
+        message: "No question with this id",
+      });
+    });
+  }
+  catch (e) {
     res.status(500).send({
       status: false,
       message: "Unexpected error",
