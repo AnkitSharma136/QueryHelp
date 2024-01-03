@@ -11,6 +11,9 @@ const QuestionSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Answers",
   },
+  upVote : Number,
+  downVote : Number,
+  shareLink : String ,
   user: Object,
 });
 
