@@ -5,7 +5,7 @@ import {
   // AssignmentTurnedInOutlined,
   NotificationsOutlined,
   PeopleAltOutlined,
-  // Search,
+  Search,
   CloseRounded,
   ExpandMore,
 } from "@material-ui/icons";
@@ -97,10 +97,10 @@ function QuoraHeader() {
                         <PeopleAltOutlined />
                     </div> */}
                 </div>
-                    {/* <div className='qHeader__input'>
+                    <div className='qHeader__input'>
                         < Search/>
                         <input type="text" placeholder='Search Question' />
-                    </div> */}
+                    </div>
                     <Button onClick={() => setIsModalOpen(true)}  style={{ border :  "1px solid" , backgroundColor : "antiquewhite" }}> Click Here to Ask a Question </Button>
                     <Modal open = {isModalOpen} 
                         closeIcon={Close}
