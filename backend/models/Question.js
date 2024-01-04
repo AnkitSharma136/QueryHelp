@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+//Mongoose schema for questions
+const mongoose = require("mongoose");     //Import Mongoose
 
-const QuestionSchema = new mongoose.Schema({
+const QuestionSchema = new mongoose.Schema({        //Define Question Schema
   questionName: String,
   questionUrl: String,
   createdAt: {
@@ -17,4 +18,4 @@ const QuestionSchema = new mongoose.Schema({
   user: Object,
 });
 
-module.exports = mongoose.model("Questions", QuestionSchema);
+module.exports = mongoose.model("Questions", QuestionSchema);     //Create Model

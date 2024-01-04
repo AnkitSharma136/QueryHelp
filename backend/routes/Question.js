@@ -3,7 +3,7 @@ const router = express.Router();
 
 const questionDB = require("../models/Question");
 
-router.post("/", async (req, res) => {
+router.post("/", async (req, res) => {    //Define a Route to Add a Question
     console.log(req.body);
   
     try {
@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res) => {     //Define a Route to Get All Questions
   try {
     await questionDB
       .aggregate([
@@ -66,7 +66,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get('/:id' , async(req , res) => {
+router.get('/:id' , async(req , res) => {     //Define a Route to Get a Specific Question by ID
   try {
     await questionDB 
     .findById(req.params.id)

@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+//Mongoose schema for answers
+const mongoose = require("mongoose");   //Import Mongoose:
 
-const AnswerSchema = new mongoose.Schema({
+const AnswerSchema = new mongoose.Schema({    //Define Answer Schema
   answer: String,
   questionId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -13,4 +14,4 @@ const AnswerSchema = new mongoose.Schema({
   user: Object,
 });
 
-module.exports = mongoose.model("Answers", AnswerSchema);
+module.exports = mongoose.model("Answers", AnswerSchema);   //Create Model
