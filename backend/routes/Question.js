@@ -89,4 +89,24 @@ router.get('/:id' , async(req , res) => {
   }
 });
 
+router.get('/findQuestion/:questionName', async (req, res) => {
+  try {
+    const doc = await questionDB.findOne({ questionName: req.params.questionName }).exec();
+
+    if (doc) {
+      res.status(200).send(doc);
+    } else {
+      res.status(404).send({
+        status: false,
+        message: "No question with this name",
+      });
+    }
+  } catch (error) {
+    res.status(500).send({
+      status: false,
+      message: "Unexpected error",
+    });
+  }
+});
+
 module.exports = router;

@@ -245,7 +245,12 @@ outline: 2px solid #000
   object-fit: contain;
 }
 
-.qHeader__add__button{
+.qHeader__add__button > {
   border: 1px solid;
+  background-color: antiquewhite;
+}
+
+.search__button{
+  border-style: solid;
   background-color: antiquewhite;
 }

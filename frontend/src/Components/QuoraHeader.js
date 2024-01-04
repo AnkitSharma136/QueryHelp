@@ -24,9 +24,24 @@ function QuoraHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputUrl, setInputUrl] = useState("");
   const [question, setQuestion] = useState("");
+
+  const [searchQuery, setSearchQuery] = useState('');
+
   const  Close = (< CloseRounded />);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+
+  const handleSearch = async () => {
+    try {
+       const response = await axios.get(`/api/questions/findQuestion/${searchQuery}`);
+       console.log(response.data);
+       // Process the search results as needed, update state, etc.
+    } catch (error) {
+       console.error(error);
+       // Handle the error, e.g., show an error message to the user.
+    }
+ };
+ 
 
   const handleSubmit = async () => {
     if (question !== "") {
@@ -98,11 +113,17 @@ function QuoraHeader() {
             </div> */}
         </div>
         <div className='qHeader__input'>
-            < Search/>
-            <input type="text" placeholder='Search Question' />
+        <Search />
+        <input
+          type="text"
+          placeholder='Search Question'
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button className='search__button' onClick={handleSearch}>Search</button>
         </div>
                   
-        <Button onClick={() => setIsModalOpen(true)} className='qHeader__add__button' style={{ border :  "1px solid" , backgroundColor : "antiquewhite" }}> Click Here to Ask a Question </Button>
+        <Button onClick={() => setIsModalOpen(true)}  style={{ border :  "1px solid" , backgroundColor : "antiquewhite" }}> Click Here to Ask a Question </Button>
         <Modal open = {isModalOpen} 
           closeIcon={Close}
           onClose={() => setIsModalOpen(false)}
