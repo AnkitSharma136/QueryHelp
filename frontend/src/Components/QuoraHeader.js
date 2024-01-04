@@ -26,15 +26,20 @@ function QuoraHeader() {
   const [question, setQuestion] = useState("");
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [isSearchModalOpen,setSearchModal] = useState(false);
+  const [searchResult,setSearchResult] = useState([]);
 
-  const  Close = (< CloseRounded />);
+  const Close = (< CloseRounded />);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   const handleSearch = async () => {
     try {
-       const response = await axios.get(`/api/questions/findQuestion/${searchQuery}`);
+      const encodedSearchQuery = encodeURIComponent(searchQuery);
+       const response = await axios.get(`/api/questions/findQuestion/${encodedSearchQuery}`);
        console.log(response.data);
+       setSearchResult(response.data);
+       setSearchModal(true);
        // Process the search results as needed, update state, etc.
     } catch (error) {
        console.error(error);
@@ -89,6 +94,8 @@ function QuoraHeader() {
   const handleHome = () => {
     window.location.reload();
   };
+
+  // console.log(searchResult);
 
   return ( 
     <div className='qHeader'>
@@ -177,6 +184,30 @@ function QuoraHeader() {
           <div className="qHeader__icon">
             <NotificationsOutlined onClick = {handleNotification}/>
           </div>
+          <Modal open = {isSearchModalOpen}
+              closeIcon = {Close}
+              onClose={() => setSearchModal(false)}
+              closeOnEsc
+              center
+              closeOnOverlayClick={false}
+              styles={{overlay: {height: "auto",},}}
+          >
+            <div >
+              <h1 style={{textAlign : "center"}}>{searchResult.questionName}</h1>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <img  src={searchResult.questionUrl}
+                    alt=""
+                    style={{ height: "40vh", objectFit: "contain" }}
+                />
+              </div>
+              <h3 style={{textAlign : "center" , marginTop : "10px" , marginBottom : "10px"}} >Answers</h3>
+              {searchResult.allAnswers && searchResult.allAnswers.map((answer, index) => (
+              <div style= {{display : "flex" , justifyContent : "center" , padding : "5px"}}key={index}>
+              <div dangerouslySetInnerHTML={{ __html: answer.answer }} />
+              {/* Other properties of the answer can be accessed here */}
+              </div>))}
+            </div>
+          </Modal>
       </div>
     </div>
   ); 

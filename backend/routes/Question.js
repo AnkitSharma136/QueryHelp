@@ -91,10 +91,24 @@ router.get('/:id' , async(req , res) => {     //Define a Route to Get a Specific
 
 router.get('/findQuestion/:questionName', async (req, res) => {
   try {
-    const doc = await questionDB.findOne({ questionName: req.params.questionName }).exec();
+    const doc = await questionDB.aggregate([
+      {
+        $match: {
+          questionName: req.params.questionName,
+        },
+      },
+      {
+        $lookup: {
+          from: 'answers',
+          localField: '_id',
+          foreignField: 'questionId',
+          as: 'allAnswers',
+        },
+      },
+    ]);
 
-    if (doc) {
-      res.status(200).send(doc);
+    if (doc && doc.length > 0) {
+      res.status(200).send(doc[0]); // Send the first element of the array
     } else {
       res.status(404).send({
         status: false,
@@ -102,11 +116,13 @@ router.get('/findQuestion/:questionName', async (req, res) => {
       });
     }
   } catch (error) {
+    console.error(error);
     res.status(500).send({
       status: false,
       message: "Unexpected error",
     });
   }
 });
+
 
 module.exports = router;
