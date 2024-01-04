@@ -9,7 +9,7 @@ function Widget() {
         <h5>Spaces to follow</h5>
       </div>
       <div className='widget__content'>
-          <WidgetContent/>
+        <WidgetContent/>
       </div>
     </div>
   )

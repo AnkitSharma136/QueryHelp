@@ -17,6 +17,7 @@ function Feed() {
         console.log(e);
       });
   }, []);
+  
   return (
     <div className="feed">
       <QuoraBox />

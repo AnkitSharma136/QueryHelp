@@ -8,14 +8,14 @@ import "./css/Quora.css";
 function Quora() {
   return (
     <div className='Quora'>
-        <QuoraHeader />
-        <div className='quora__contents'>
-          <div className='quora__content'>
-            < Sidebar />
-            < Feed />
-            < Widget />
-          </div>
+      <QuoraHeader />
+      <div className='quora__contents'>
+        <div className='quora__content'>
+          < Sidebar />
+          < Feed />
+          < Widget />
         </div>
+      </div>
     </div>
   )
 }

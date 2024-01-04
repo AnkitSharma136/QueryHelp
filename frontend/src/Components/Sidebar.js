@@ -5,7 +5,7 @@ import SidebarOptions from './SidebarOptions';
 function Sidebar() {
   return (
     <div className='sidebar'>
-        <SidebarOptions />
+      <SidebarOptions />
     </div>
   )
 }
