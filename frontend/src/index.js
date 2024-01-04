@@ -15,10 +15,10 @@ TimeAgo.addDefaultLocale(en);
 // TimeAgo.addLocale(en);
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));      // create a root for a concurrent React application
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
+  <React.StrictMode>        
+    <Provider store={store}>    
       <App />
     </Provider>
   </React.StrictMode>

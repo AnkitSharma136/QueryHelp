@@ -12,7 +12,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (authUser) => {
+    onAuthStateChanged(auth, (authUser) => {    //Firebase Authentication:
       if (authUser) {
         dispatch(
           login({

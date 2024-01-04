@@ -1,3 +1,4 @@
+// component responsible for rendering a box or section at the top of the Quora interface
 import { Avatar } from '@material-ui/core'
 import React from 'react'
 import { useSelector } from "react-redux";

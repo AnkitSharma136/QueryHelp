@@ -1,3 +1,4 @@
+//higher-level React component that composes several other components to build the main Quora interface
 import React from 'react'
 import QuoraHeader from './QuoraHeader';
 import Sidebar from './Sidebar';

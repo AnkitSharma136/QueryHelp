@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react";      // React functional component that renders login
 import "./Login.css";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
