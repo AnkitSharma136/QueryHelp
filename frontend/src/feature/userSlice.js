@@ -1,3 +1,4 @@
+//part of a Redux slice for managing the user state in a React application using the @reduxjs/toolkit.
 import { createSlice } from "@reduxjs/toolkit";
 
 export const userSlice = createSlice({

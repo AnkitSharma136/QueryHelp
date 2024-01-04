@@ -1,3 +1,4 @@
+//React functional component that renders a button triggering a modal to add a question
 import React, { useState } from 'react';
 import  {Avatar, Button} from "@material-ui/core";
 import { Modal } from "react-responsive-modal";
