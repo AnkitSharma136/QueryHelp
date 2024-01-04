@@ -10,50 +10,50 @@ import "./css/addQuestion.css";
 import { CloseRounded, ExpandMore, PeopleAltOutlined } from '@material-ui/icons';
 
 function AddQuestion() {
-        const [isModalOpen, setIsModalOpen] = useState(false);
-        const [inputUrl, setInputUrl] = useState("");
-        const [question, setQuestion] = useState("");
-        const  Close = (< CloseRounded />);
-        const user = useSelector(selectUser);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [inputUrl, setInputUrl] = useState("");
+  const [question, setQuestion] = useState("");
+  const  Close = (< CloseRounded />);
+  const user = useSelector(selectUser);
 
-        const handleSubmit = async () => {
-            if (question !== "") {
-              const config = {
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              };
-              const body = {
-                questionName: question,
-                questionUrl: inputUrl,
-                user: user,
-              };
-              await axios
-                .post("/api/questions", body, config)
-                .then((res) => {
-                  console.log(res.data);
-                  alert(res.data.message);
-                  window.location.href = "/";
-                })
-                .catch((e) => {
-                  console.log(e);
-                  alert("Error in adding question");
-                });
-            }
-          };
+  const handleSubmit = async () => {
+    if (question !== "") {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const body = {
+        questionName: question,
+        questionUrl: inputUrl,
+        user: user,
+      };
+      await axios
+        .post("/api/questions", body, config)
+        .then((res) => {
+          console.log(res.data);
+          alert(res.data.message);
+          window.location.href = "/";
+        })
+        .catch((e) => {
+          console.log(e);
+          alert("Error in adding question");
+        });
+    }
+  };
   return (
     <div className='addQuestion__Button'>
         <Button className='button__add'  style={{ border :"1px solid"}}onClick={() => setIsModalOpen(true)}> Add Question </Button>
             <Modal open = {isModalOpen} 
-                closeIcon={Close}
-                onClose={() => setIsModalOpen(false)}
-                closeOnEsc
-                center
-                closeOnOverlayClick={false}
-                styles={{
-                overlay: {
-                height: "auto",
-                },
+              closeIcon={Close}
+              onClose={() => setIsModalOpen(false)}
+              closeOnEsc
+              center
+              closeOnOverlayClick={false}
+              styles={{
+              overlay: {
+              height: "auto",
+              },
             }}
             >
             <div className='modal__title'>
